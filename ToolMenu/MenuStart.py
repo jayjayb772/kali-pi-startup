@@ -1,5 +1,7 @@
 import tkinter as tk
 
+from ToolMenu.submenus.wifiCommands import wifiteQuick
+
 
 class TouchMenu(tk.Tk):
 
@@ -31,7 +33,7 @@ class MainMenu(tk.Frame):
         label = tk.Label(self, text="Main Menu")
         label.grid(row=0, columnspan=10, column=5, pady=10, padx=10)
 
-        button1 = tk.Button(self, text="Wifi page",
+        button1 = tk.Button(self, text="Wifi Attacks",
                             command=lambda: controller.show_frame(WifiMenu))
         button1.grid(row=2, rowspan=2, column=3, pady=10, padx=10)
         button2 = tk.Button(self, text="Local Network Recon",
@@ -49,24 +51,36 @@ class MainMenu(tk.Frame):
 
 
 # region submenus
-class ToolsMenu(tk.Frame):
-    def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
-        label = tk.Label(self, text="Tools Menu")
-        label.pack(pady=10, padx=10)
-        button1 = tk.Button(self, text="Back to Home",
-                            command=lambda: controller.show_frame(MainMenu))
-        button1.pack()
-
-
 class WifiMenu(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         label = tk.Label(self, text="Wifi Menu")
         label.pack(pady=10, padx=10)
-        button1 = tk.Button(self, text="Back to Home",
+        #wifite quick scan
+        btnQuick = tk.Button(self, text="Wifite Quick Scan", command=lambda: wifiteQuick())
+
+        #wifite full scan
+        #wireshark
+        #bluetooth scan
+        btnHome = tk.Button(self, text="Back to Home",
                             command=lambda: controller.show_frame(MainMenu))
-        button1.pack()
+        btnQuick.pack()
+        btnHome.pack()
+
+
+class ToolsMenu(tk.Frame):
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        label = tk.Label(self, text="Tools Menu")
+        label.pack(pady=10, padx=10)
+        #airrgeddon
+        #PRET
+        #routersploit
+        #social engineering toolkit
+        #metasploit
+        btnHome = tk.Button(self, text="Back to Home",
+                            command=lambda: controller.show_frame(MainMenu))
+        btnHome.pack()
 
 
 class LNRMenu(tk.Frame):
@@ -74,9 +88,12 @@ class LNRMenu(tk.Frame):
         tk.Frame.__init__(self, parent)
         label = tk.Label(self, text="Local Network Recon Menu")
         label.pack(pady=10, padx=10)
-        button1 = tk.Button(self, text="Back to Home",
+        #nmap
+        #netdiscover
+        #wireshark
+        btnHome = tk.Button(self, text="Back to Home",
                             command=lambda: controller.show_frame(MainMenu))
-        button1.pack()
+        btnHome.pack()
 
 
 class UtilitiesMenu(tk.Frame):
@@ -84,9 +101,13 @@ class UtilitiesMenu(tk.Frame):
         tk.Frame.__init__(self, parent)
         label = tk.Label(self, text="Utilities Menu")
         label.pack(pady=10, padx=10)
-        button1 = tk.Button(self, text="Back to Home",
+        #ifconfig
+        #pwnCon
+        #vnc
+        #bluetooth
+        btnHome = tk.Button(self, text="Back to Home",
                             command=lambda: controller.show_frame(MainMenu))
-        button1.pack()
+        btnHome.pack()
 
 
 class WRMenu(tk.Frame):
@@ -94,9 +115,14 @@ class WRMenu(tk.Frame):
         tk.Frame.__init__(self, parent)
         label = tk.Label(self, text="Web Recon Menu")
         label.pack(pady=10, padx=10)
-        button1 = tk.Button(self, text="Back to Home",
+        #nmap
+        #sqlmap
+        #wpscan
+        #dirb
+        #burpsuite
+        btnHome = tk.Button(self, text="Back to Home",
                             command=lambda: controller.show_frame(MainMenu))
-        button1.pack()
+        btnHome.pack()
 
 
 # endregion

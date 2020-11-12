@@ -8,7 +8,7 @@ sudo apt full-upgrade -y
 sudo apt dist-upgrade -y
 sudo apt install onboard -y
 sudo apt-get install cmake build-essential python-pip libusb-1.0-0-dev python-numpy git pandoc -y
-sudo mkdir $HOME/Tools
+sudo mkdir "$HOME"/Tools
 cd Tools
 # Get routersploit
 git clone https://github.com/threat9/routersploit
