@@ -4,7 +4,9 @@ commands = {
     'ifconfig': 'sudo ifconfig',
     'pwncon':'sudo ~/pwnCon.sh',
     'vnc':'sudo ~/vnc.sh',
-    'bt':'help'
+    'bt':'help',
+    'shutdown':'sudo shutdown now',
+    'reboot':'sudo reboot now'
 }
 
 
@@ -22,3 +24,10 @@ def vnc():
 
 def btToggle():
     return
+
+
+def shutdown():
+    os.system("gnome-terminal -e 'bash -c \"" + commands['shutdown'] + "\" '")
+
+def reboot():
+    os.system("gnome-terminal -e 'bash -c \"" + commands['reboot'] + "\" '")

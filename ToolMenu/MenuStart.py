@@ -215,10 +215,21 @@ class UtilitiesMenu(tk.Frame):
                           font=("Courier Bold", 16),
                           fg="white", state=tk.DISABLED)
         btnBT.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
-
+        #go home
         btnHome = tk.Button(self, text="Back to Home",
                             command=lambda: controller.show_frame(MainMenu), bg="red")
         btnHome.pack(fill=tk.X, side=tk.BOTTOM)
+        # reboot
+        btnVNC = tk.Button(self, text="REBOOT", command=lambda: utils.reboot(), bg="red",
+                           font=("Courier Bold", 16), fg="white")
+        btnVNC.pack(fill=tk.X, side=tk.BOTTOM)
+
+        # shutdown
+        btnBT = tk.Button(self, text="SHUTDOWN", command=lambda: utils.shutdown(), bg="red",
+                          font=("Courier Bold", 16), fg="white")
+        btnBT.pack(fill=tk.X, side=tk.BOTTOM)
+
+
 
 
 # endregion
