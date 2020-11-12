@@ -8,11 +8,11 @@ commands = {
 
 
 def wifiteQuick():
-    os.system("gnome-terminal -e 'bash -c \"" + commands['wifite_quick'] + "; bash\" '")
+    os.system("gnome-terminal -e 'bash -c \"" + commands['wifite_quick'] + "\" '")
 
 
 def wifiteFull():
-    os.system("gnome-terminal -e 'bash -c \"" + commands['wifite_full'] + "; bash\" '")
+    os.system("gnome-terminal -e 'bash -c \"" + commands['wifite_full'] + "\" '")
 
 
 def wireshark():

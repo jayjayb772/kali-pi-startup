@@ -10,7 +10,7 @@ commands = {
 
 
 def airgeddon():
-    os.system("gnome-terminal -e 'bash -c \"" + commands['airgeddon'] + "; bash\" '")
+    os.system("gnome-terminal -e 'bash -c \"" + commands['airgeddon'] + "\" '")
 
 
 def pret():
@@ -18,12 +18,12 @@ def pret():
 
 
 def routersploit():
-    os.system("gnome-terminal -e 'bash -c \"" + commands['routersploit'] + "; bash\" '")
+    os.system("gnome-terminal -e 'bash -c \"" + commands['routersploit'] + "\" '")
 
 
 def metasploit():
-    os.system("gnome-terminal -e 'bash -c \"" + commands['metasploit'] + "; bash\" '")
+    os.system("gnome-terminal -e 'bash -c \"" + commands['metasploit'] + "\" '")
 
 
 def setk():
-    os.system("gnome-terminal -e 'bash -c \"" + commands['setk'] + "; bash\" '")
+    os.system("gnome-terminal -e 'bash -c \"" + commands['setk'] + "\" '")
