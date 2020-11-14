@@ -8,8 +8,8 @@ import submenus.webCommands as web
 import codeUtils.interfaceClass as iface
 
 wlan0 = iface.Interface("wlan0")
-#eth0 = iface.Interface("eth0")
-currentIface=wlan0
+# eth0 = iface.Interface("eth0")
+currentIface = wlan0
 
 
 class TouchMenu(tk.Tk):
@@ -144,23 +144,25 @@ class LocalNmapMenu(tk.Frame):
         btnNmapManual.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
 
         # nmap list hosts
-        btnNmapListHost = tk.Button(self, text="nmap list hosts", command=lambda: local.nmap("-sn", currentIface.getrange()),
+        btnNmapListHost = tk.Button(self, text="nmap list hosts",
+                                    command=lambda: local.nmap("-sn", currentIface.getrange()),
                                     bg="grey",
                                     font=("Courier Bold", 16), fg="white")
         btnNmapListHost.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
 
         # nmap scan host ports
-        btnNmapHostPorts = tk.Button(self, text="nmap list host ports", command=lambda: local.nmap("", currentIface.getrange()), bg="grey",
+        btnNmapHostPorts = tk.Button(self, text="nmap list host ports",
+                                     command=lambda: local.nmap("", currentIface.getrange()), bg="grey",
                                      font=("Courier Bold", 16), fg="white")
         btnNmapHostPorts.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
 
         # switch currentIface
         btnSwitchIface = tk.Button(self, text="switch current interface",
-                                     command=lambda: switchIface(), bg="grey",
-                                     font=("Courier Bold", 16), fg="white")
+                                   command=lambda: switchIface(), bg="grey",
+                                   font=("Courier Bold", 16), fg="white", state=tk.DISABLED)
         btnSwitchIface.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
 
-        btnHome = tk.Button(self, text="Back to Home",
+        btnHome = tk.Button(self, text="Back to Local network recon menu",
                             command=lambda: controller.show_frame(LNRMenu), bg="red")
         btnHome.pack(fill=tk.X, side=tk.BOTTOM)
 
@@ -261,6 +263,11 @@ class UtilitiesMenu(tk.Frame):
                               fg="white", state=tk.DISABLED)
         btnPwnCon.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
 
+        # pwnCon
+        btnMacChange = tk.Button(self, text="set random mac address for wlan0", command=lambda: utils.pwnCon(),
+                                 bg="grey", font=("Courier Bold", 16), fg="white")
+        btnMacChange.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
+
         # vnc
         btnVNC = tk.Button(self, text="Enable VNC", command=lambda: utils.vnc(), bg="grey", font=("Courier Bold", 16),
                            fg="white", state=tk.DISABLED)
@@ -276,14 +283,14 @@ class UtilitiesMenu(tk.Frame):
                             command=lambda: controller.show_frame(MainMenu), bg="red")
         btnHome.pack(fill=tk.X, side=tk.BOTTOM)
         # reboot
-        btnVNC = tk.Button(self, text="REBOOT", command=lambda: utils.reboot(), bg="red",
-                           font=("Courier Bold", 16), fg="white")
-        btnVNC.pack(fill=tk.X, side=tk.BOTTOM)
+        btnReboot = tk.Button(self, text="REBOOT", command=lambda: utils.reboot(), bg="red",
+                              font=("Courier Bold", 16), fg="white")
+        btnReboot.pack(fill=tk.X, side=tk.BOTTOM)
 
         # shutdown
-        btnBT = tk.Button(self, text="SHUTDOWN", command=lambda: utils.shutdown(), bg="red",
-                          font=("Courier Bold", 16), fg="white")
-        btnBT.pack(fill=tk.X, side=tk.BOTTOM)
+        btnShutdown = tk.Button(self, text="SHUTDOWN", command=lambda: utils.shutdown(), bg="red",
+                                font=("Courier Bold", 16), fg="white")
+        btnShutdown.pack(fill=tk.X, side=tk.BOTTOM)
 
 
 # endregion
