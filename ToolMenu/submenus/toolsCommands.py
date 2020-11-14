@@ -10,20 +10,20 @@ commands = {
 
 
 def airgeddon():
-    os.system("gnome-terminal --geometry 80x15+0+0 -e 'bash -c \"" + commands['airgeddon'] + "\" '")
+    os.system("gnome-terminal --geometry 80x10+0+0 -e 'bash -c \"" + commands['airgeddon'] + "\" '")
 
 
 def pret():
-    os.system("gnome-terminal --geometry 80x15+0+0 -e 'bash -c \"" + commands['pret'] + "; bash\" '")
+    os.system("gnome-terminal --geometry 80x10+0+0 -e 'bash -c \"" + commands['pret'] + "; bash\" '")
 
 
 def routersploit():
-    os.system("gnome-terminal --geometry 80x15+0+0 -e 'bash -c \"" + commands['routersploit'] + "\" '")
+    os.system("gnome-terminal --geometry 80x10+0+0 -e 'bash -c \"" + commands['routersploit'] + "\" '")
 
 
 def metasploit():
-    os.system("gnome-terminal --geometry 80x15+0+0 -e 'bash -c \"" + commands['metasploit'] + "\" '")
+    os.system("gnome-terminal --geometry 80x10+0+0 -e 'bash -c \"" + commands['metasploit'] + "\" '")
 
 
 def setk():
-    os.system("gnome-terminal --geometry 80x15+0+0 -e 'bash -c \"" + commands['setk'] + "\" '")
+    os.system("gnome-terminal --geometry 80x10+0+0 -e 'bash -c \"" + commands['setk'] + "\" '")
