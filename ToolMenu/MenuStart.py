@@ -156,6 +156,12 @@ class LocalNmapMenu(tk.Frame):
                                      font=("Courier Bold", 16), fg="white")
         btnNmapHostPorts.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
 
+        # nmap scan host ports with -A
+        btnNmapHostPortsAll = tk.Button(self, text="nmap list host ports (-A option)",
+                                     command=lambda: local.nmap("-A", currentIface.getrange()), bg="grey",
+                                     font=("Courier Bold", 16), fg="white")
+        btnNmapHostPortsAll.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
+
         # switch currentIface
         btnSwitchIface = tk.Button(self, text="switch current interface",
                                    command=lambda: switchIface(), bg="grey",
