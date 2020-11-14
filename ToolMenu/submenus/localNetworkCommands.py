@@ -7,8 +7,9 @@ commands = {
 }
 
 
-def nmap(scanType="-h", scanrange=""):
-    os.system("gnome-terminal --geometry 80x15+0+0 -e 'bash -c \"" + commands['nmap'] + scanType + scanrange + "; bash\" '")
+def nmap(scanType=" -h ", scanrange=" "):
+    os.system("gnome-terminal --geometry 80x15+0+0 -e 'bash -c \"" + commands[
+        'nmap'] + " " + scanType + " " + scanrange + "; bash\" '")
 
 
 def netdiscover():
