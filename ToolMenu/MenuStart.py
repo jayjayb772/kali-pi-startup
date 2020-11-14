@@ -269,8 +269,8 @@ class UtilitiesMenu(tk.Frame):
                               fg="white", state=tk.DISABLED)
         btnPwnCon.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
 
-        # pwnCon
-        btnMacChange = tk.Button(self, text="set random mac address for wlan0", command=lambda: utils.pwnCon(),
+        # macchange
+        btnMacChange = tk.Button(self, text="set random mac address for wlan0", command=lambda: utils.macchange(),
                                  bg="grey", font=("Courier Bold", 16), fg="white")
         btnMacChange.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
 
