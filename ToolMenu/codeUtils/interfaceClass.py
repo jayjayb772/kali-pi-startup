@@ -11,6 +11,8 @@ class Interface:
             self.ip = ni.ifaddresses(self.name)[ni.AF_INET][0]['addr']
         except():
             print("cannot init " + self.name)
+        finally:
+            print()
         temp = self.ip.split(".")
         temp[3] = "1-255"
         dot = "."
