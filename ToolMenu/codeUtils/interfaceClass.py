@@ -7,12 +7,7 @@ class Interface:
         print("hello world")
         # get ip of iface
         ni.ifaddresses(self.name)
-        try:
-            self.ip = ni.ifaddresses(self.name)[ni.AF_INET][0]['addr']
-        except():
-            print("cannot init " + self.name)
-        finally:
-            print()
+        self.ip = ni.ifaddresses(self.name)[ni.AF_INET][0]['addr']
         temp = self.ip.split(".")
         temp[3] = "1-255"
         dot = "."
