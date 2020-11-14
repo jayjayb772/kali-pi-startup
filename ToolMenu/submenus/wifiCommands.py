@@ -8,15 +8,15 @@ commands = {
 
 
 def wifiteQuick():
-    os.system("gnome-terminal -e 'bash -c \"" + commands['wifite_quick'] + "\" '")
+    os.system("gnome-terminal --geometry 80x15+0+0 -e 'bash -c \"" + commands['wifite_quick'] + "\" '")
 
 
 def wifiteFull():
-    os.system("gnome-terminal -e 'bash -c \"" + commands['wifite_full'] + "\" '")
+    os.system("gnome-terminal --geometry 80x15+0+0 -e 'bash -c \"" + commands['wifite_full'] + "\" '")
 
 
 def wireshark():
-    os.system("gnome-terminal -e 'bash -c \"" + commands['wireshark'] + "\" '")
+    os.system("gnome-terminal --geometry 80x15+0+0 -e 'bash -c \"" + commands['wireshark'] + "\" '")
 
 
 def btScan():

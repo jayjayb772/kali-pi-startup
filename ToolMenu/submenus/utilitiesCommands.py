@@ -11,7 +11,7 @@ commands = {
 
 
 def ifconfig():
-    os.system("gnome-terminal -e 'bash -c \"" + commands['ifconfig'] + "; bash\" '")
+    os.system("gnome-terminal --geometry 80x15+0+0 -e 'bash -c \"" + commands['ifconfig'] + "; bash\" '")
 
 
 def pwnCon():
@@ -27,7 +27,7 @@ def btToggle():
 
 
 def shutdown():
-    os.system("gnome-terminal -e 'bash -c \"" + commands['shutdown'] + "\" '")
+    os.system("gnome-terminal --geometry 80x15+0+0 -e 'bash -c \"" + commands['shutdown'] + "\" '")
 
 def reboot():
-    os.system("gnome-terminal -e 'bash -c \"" + commands['reboot'] + "\" '")
+    os.system("gnome-terminal --geometry 80x15+0+0 -e 'bash -c \"" + commands['reboot'] + "\" '")

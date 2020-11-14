@@ -11,20 +11,20 @@ commands = {
 
 
 def nmap():
-    os.system("gnome-terminal -e 'bash -c \"" + commands['nmap'] + "; bash\" '")
+    os.system("gnome-terminal --geometry 80x15+0+0 -e 'bash -c \"" + commands['nmap'] + "; bash\" '")
 
 
 def sqlmap():
-    os.system("gnome-terminal -e 'bash -c \"" + commands['sqlmap'] + "; bash\" '")
+    os.system("gnome-terminal --geometry 80x15+0+0 -e 'bash -c \"" + commands['sqlmap'] + "; bash\" '")
 
 
 def wpscan():
-    os.system("gnome-terminal -e 'bash -c \"" + commands['wpscan'] + "; bash\" '")
+    os.system("gnome-terminal --geometry 80x15+0+0 -e 'bash -c \"" + commands['wpscan'] + "; bash\" '")
 
 
 def dirb():
-    os.system("gnome-terminal -e 'bash -c \"" + commands['dirb'] + "; bash\" '")
+    os.system("gnome-terminal --geometry 80x15+0+0 -e 'bash -c \"" + commands['dirb'] + "; bash\" '")
 
 
 def burp():
-    os.system("gnome-terminal -e 'bash -c \"" + commands['burp'] + "\" '")
+    os.system("gnome-terminal --geometry 80x15+0+0 -e 'bash -c \"" + commands['burp'] + "\" '")

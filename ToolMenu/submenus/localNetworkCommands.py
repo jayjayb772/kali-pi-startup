@@ -8,12 +8,12 @@ commands = {
 
 
 def nmap(scanType="-h", scanrange=""):
-    os.system("gnome-terminal -e 'bash -c \"" + commands['nmap'] + scanType + scanrange + "; bash\" '")
+    os.system("gnome-terminal --geometry 80x15+0+0 -e 'bash -c \"" + commands['nmap'] + scanType + scanrange + "; bash\" '")
 
 
 def netdiscover():
-    os.system("gnome-terminal -e 'bash -c \"" + commands['netdisc'] + "; bash\" '")
+    os.system("gnome-terminal --geometry 80x15+0+0 -e 'bash -c \"" + commands['netdisc'] + "; bash\" '")
 
 
 def wireshark():
-    os.system("gnome-terminal -e 'bash -c \"" + commands['wireshark'] + "\" '")
+    os.system("gnome-terminal --geometry 80x15+0+0 -e 'bash -c \"" + commands['wireshark'] + "\" '")
