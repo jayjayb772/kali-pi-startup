@@ -5,10 +5,14 @@ import submenus.localNetworkCommands as local
 import submenus.utilitiesCommands as utils
 import submenus.toolsCommands as tools
 import submenus.webCommands as web
+import codeUtils.interfaceClass as iface
+
+wlan0 = iface.Interface("wlan0")
+eth0 = iface.Interface("eth0")
+currentIface=wlan0
 
 
 class TouchMenu(tk.Tk):
-
     def __init__(self, *args, **kwargs, ):
         tk.Tk.__init__(self, *args, **kwargs)
         container = tk.Frame(self)
@@ -19,7 +23,7 @@ class TouchMenu(tk.Tk):
         container.grid_columnconfigure(0, weight=1)
 
         self.frames = {}
-        for F in (MainMenu, WifiMenu, LNRMenu, WRMenu, UtilitiesMenu, ToolsMenu):
+        for F in (MainMenu, WifiMenu, LNRMenu, LocalNmapMenu, WRMenu, UtilitiesMenu, ToolsMenu):
             frame = F(container, self)
             self.frames[F] = frame
             frame.grid(row=0, column=0, sticky="nsew")
@@ -38,7 +42,7 @@ class MainMenu(tk.Frame):
                          font=("Courier Bold", 24), fg="white", bg="black")
         label.pack(side=tk.TOP, expand=True, fill=tk.BOTH)
 
-        button1 = tk.Button(self, text="Wifi Attacks",
+        button1 = tk.Button(self, text="Wi-Fi Attacks",
                             command=lambda: controller.show_frame(WifiMenu),
                             font=("Courier Bold", 16), fg="white", bg="black")
         button1.pack(side=tk.TOP, expand=True, fill=tk.BOTH)
@@ -61,6 +65,7 @@ class MainMenu(tk.Frame):
 
 
 # region submenus
+# region WifiMenu
 class WifiMenu(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
@@ -89,6 +94,8 @@ class WifiMenu(tk.Frame):
         btnHome.pack(fill=tk.X, side=tk.BOTTOM)
 
 
+# endregion
+# region LNRMenu
 class LNRMenu(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
@@ -96,7 +103,7 @@ class LNRMenu(tk.Frame):
                          font=("Courier Bold", 24), fg="white", bg="black")
         label.pack(side=tk.TOP, expand=True, fill=tk.BOTH)
         # nmap
-        btnNmap = tk.Button(self, text="nmap (manual)", command=lambda: local.nmap(), bg="grey",
+        btnNmap = tk.Button(self, text="nmap (manual)", command=lambda: controller.show_frame(LocalNmapMenu), bg="grey",
                             font=("Courier Bold", 16), fg="white")
         btnNmap.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
 
@@ -115,6 +122,51 @@ class LNRMenu(tk.Frame):
         btnHome.pack(fill=tk.X, side=tk.BOTTOM)
 
 
+def switchIface():
+    global currentIface
+    global wlan0
+    global eth0
+    if currentIface.getIfaceName() == "wlan0":
+        currentIface = eth0
+    else:
+        currentIface = wlan0
+
+
+class LocalNmapMenu(tk.Frame):
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        label = tk.Label(self, text="Local nmap Options for " + currentIface.getIfaceName(),
+                         font=("Courier Bold", 24), fg="white", bg="black")
+        label.pack(side=tk.TOP, expand=True, fill=tk.BOTH)
+        # nmap manual
+        btnNmapManual = tk.Button(self, text="nmap (manual)", command=lambda: local.nmap(), bg="grey",
+                                  font=("Courier Bold", 16), fg="white")
+        btnNmapManual.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
+
+        # nmap list hosts
+        btnNmapListHost = tk.Button(self, text="nmap list hosts", command=lambda: local.nmap("-sn", currentIface.getrange()),
+                                    bg="grey",
+                                    font=("Courier Bold", 16), fg="white")
+        btnNmapListHost.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
+
+        # nmap scan host ports
+        btnNmapHostPorts = tk.Button(self, text="nmap list host ports", command=lambda: local.nmap("", currentIface.getrange()), bg="grey",
+                                     font=("Courier Bold", 16), fg="white")
+        btnNmapHostPorts.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
+
+        # switch currentIface
+        btnSwitchIface = tk.Button(self, text="switch current interface",
+                                     command=lambda: switchIface(), bg="grey",
+                                     font=("Courier Bold", 16), fg="white")
+        btnSwitchIface.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
+
+        btnHome = tk.Button(self, text="Back to Home",
+                            command=lambda: controller.show_frame(LNRMenu), bg="red")
+        btnHome.pack(fill=tk.X, side=tk.BOTTOM)
+
+
+# endregion
+# region WRMenu
 class WRMenu(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
@@ -153,6 +205,8 @@ class WRMenu(tk.Frame):
         btnHome.pack(fill=tk.X, side=tk.BOTTOM)
 
 
+# endregion
+# region Tools
 class ToolsMenu(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
@@ -188,6 +242,8 @@ class ToolsMenu(tk.Frame):
         btnHome.pack(fill=tk.X, side=tk.BOTTOM)
 
 
+# endregion
+# region Utilities
 class UtilitiesMenu(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
@@ -215,7 +271,7 @@ class UtilitiesMenu(tk.Frame):
                           font=("Courier Bold", 16),
                           fg="white", state=tk.DISABLED)
         btnBT.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
-        #go home
+        # go home
         btnHome = tk.Button(self, text="Back to Home",
                             command=lambda: controller.show_frame(MainMenu), bg="red")
         btnHome.pack(fill=tk.X, side=tk.BOTTOM)
@@ -230,9 +286,9 @@ class UtilitiesMenu(tk.Frame):
         btnBT.pack(fill=tk.X, side=tk.BOTTOM)
 
 
-
-
 # endregion
+# endregion
+
 
 app = TouchMenu()
 app.geometry("800x480")

@@ -1,14 +1,14 @@
 import os
 
 commands = {
-    'nmap': 'sudo nmap -h',
+    'nmap': 'sudo nmap',
     'netdisc': 'sudo netdiscover -h',
     'wireshark': 'sudo wireshark &'
 }
 
 
-def nmap():
-    os.system("gnome-terminal -e 'bash -c \"" + commands['nmap'] + "; bash\" '")
+def nmap(scanType="-h", scanrange=""):
+    os.system("gnome-terminal -e 'bash -c \"" + commands['nmap'] + scanType + scanrange + "; bash\" '")
 
 
 def netdiscover():
