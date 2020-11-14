@@ -158,8 +158,8 @@ class LocalNmapMenu(tk.Frame):
 
         # nmap scan host ports with -A
         btnNmapHostPortsAll = tk.Button(self, text="nmap list host ports (-A option)",
-                                     command=lambda: local.nmap("-A", currentIface.getrange()), bg="grey",
-                                     font=("Courier Bold", 16), fg="white")
+                                        command=lambda: local.nmap("-A", currentIface.getrange()), bg="grey",
+                                        font=("Courier Bold", 16), fg="white")
         btnNmapHostPortsAll.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
 
         # switch currentIface
