@@ -2,16 +2,12 @@ import netifaces as ni
 
 
 class Interface:
-    ip = ""
-    iprange = ""
-    iface = ""
-
     def __init__(self, iface):
-        self.iface = iface
+        self.name = iface
         print("hello world")
         # get ip of iface
-        ni.ifaddresses(self.iface)
-        self.ip = ni.ifaddresses(self.iface)[ni.AF_INET][0]['addr']
+        ni.ifaddresses(self.name)
+        self.ip = ni.ifaddresses(self.name)[ni.AF_INET][0]['addr']
         temp = self.ip.split(".")
         temp[3] = "1-255"
         dot = "."
@@ -24,4 +20,4 @@ class Interface:
         return self.iprange
 
     def getIfaceName(self):
-        return self.iface
+        return self.name
