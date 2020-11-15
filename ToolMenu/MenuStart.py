@@ -180,7 +180,8 @@ class LocalNmapMenu(tk.Frame):
 class WRMenu(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        label = tk.Label(self, text="Web Recon Menu")
+        label = tk.Label(self, text="Web Recon Menu",
+                         font=("Courier Bold", 24), fg="white", bg="black")
         label.pack(pady=10, padx=10)
         # nmap
         btnNmap = tk.Button(self, text="nmap options", command=lambda: web.nmap(), bg="grey",
@@ -220,15 +221,16 @@ class WRMenu(tk.Frame):
 class ToolsMenu(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        label = tk.Label(self, text="Tools Menu")
-        label.pack(pady=10, padx=10)
+        label = tk.Label(self, text="Tools Menu",
+                         font=("Courier Bold", 24), fg="white", bg="black")
+        label.pack(side=tk.TOP, expand=True, fill=tk.BOTH)
         # airgeddon
         btnAirgeddon = tk.Button(self, text="Start Airgeddon", command=lambda: tools.airgeddon(), bg="grey",
                                  font=("Courier Bold", 16), fg="white")
         btnAirgeddon.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
 
         # PRET
-        btnPRET = tk.Button(self, text="PRET (Autostart)", command=lambda: controller.show_frame(PretMenu), bg="grey",
+        btnPRET = tk.Button(self, text="PRET options", command=lambda: controller.show_frame(PretMenu), bg="grey",
                             font=("Courier Bold", 16), fg="white")
         btnPRET.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
 
@@ -255,12 +257,16 @@ class ToolsMenu(tk.Frame):
 class PretMenu(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        label = tk.Label(self, text="Tools Menu")
-        label.pack(pady=10, padx=10)
+        label = tk.Label(self, text="PRET Menu",
+                         font=("Courier Bold", 24), fg="white", bg="black")
+        label.pack(side=tk.TOP, fill=tk.X)
         target = tk.StringVar()
 
         # ip enter box
-        entrTarget = tk.Entry(self, bg="white", font=("Courier Bold", 16), fg="black", textvariable=target)
+        lblTarget = tk.Label(self, bg="white", font=("Courier Bold", 12), fg="black",
+                             text="Please type the printer's IP address below")
+        lblTarget.pack(fill=tk.X, side=tk.TOP)
+        entrTarget = tk.Entry(self, bg="white", font=("Courier Bold", 12), fg="black", textvariable=target)
         entrTarget.pack(fill=tk.X, side=tk.TOP)
 
         btnBack = tk.Button(self, text="Back to Tools Menu",
@@ -291,7 +297,8 @@ class PretMenu(tk.Frame):
 class UtilitiesMenu(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        label = tk.Label(self, text="Utilities Menu")
+        label = tk.Label(self, text="Utilities Menu",
+                         font=("Courier Bold", 24), fg="white", bg="black")
         label.pack(pady=10, padx=10)
         # ifconfig
         btnIfconfig = tk.Button(self, text="Run ifconfig", command=lambda: utils.ifconfig(), bg="grey",

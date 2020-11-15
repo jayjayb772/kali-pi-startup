@@ -16,6 +16,8 @@ def airgeddon():
 def pret(target="-h", type=""):
     os.system("gnome-terminal --geometry 80x10+0+0 -e 'bash -c \"" + commands[
         'pret'] + " " + target + " " + type + "; bash\" '")
+    print("gnome-terminal --geometry 80x10+0+0 -e 'bash -c \"" + commands[
+        'pret'] + " " + target + " " + type + "; bash\" '")
 
 
 def routersploit():
