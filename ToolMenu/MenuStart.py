@@ -5,11 +5,13 @@ import submenus.localNetworkCommands as local
 import submenus.utilitiesCommands as utils
 import submenus.toolsCommands as tools
 import submenus.webCommands as web
-import codeUtils.interfaceClass as iface
 
-wlan0 = iface.Interface("wlan0")
+
+# import codeUtils.interfaceClass as iface
+
+# wlan0 = iface.Interface("wlan0")
 # eth0 = iface.Interface("eth0")
-currentIface = wlan0
+# currentIface = wlan0
 
 
 class TouchMenu(tk.Tk):
@@ -23,7 +25,7 @@ class TouchMenu(tk.Tk):
         container.grid_columnconfigure(0, weight=1)
 
         self.frames = {}
-        for F in (MainMenu, WifiMenu, LNRMenu, LocalNmapMenu, WRMenu, UtilitiesMenu, ToolsMenu):
+        for F in (MainMenu, WifiMenu, LNRMenu, LocalNmapMenu, WRMenu, UtilitiesMenu, ToolsMenu, PretMenu):
             frame = F(container, self)
             self.frames[F] = frame
             frame.grid(row=0, column=0, sticky="nsew")
@@ -103,7 +105,7 @@ class LNRMenu(tk.Frame):
                          font=("Courier Bold", 24), fg="white", bg="black")
         label.pack(side=tk.TOP, expand=True, fill=tk.BOTH)
         # nmap
-        btnNmap = tk.Button(self, text="nmap (manual)", command=lambda: controller.show_frame(LocalNmapMenu), bg="grey",
+        btnNmap = tk.Button(self, text="nmap options", command=lambda: controller.show_frame(LocalNmapMenu), bg="grey",
                             font=("Courier Bold", 16), fg="white")
         btnNmap.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
 
@@ -135,7 +137,7 @@ def switchIface():
 class LocalNmapMenu(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        label = tk.Label(self, text="Local nmap Options for " + currentIface.getIfaceName(),
+        label = tk.Label(self, text="Local nmap Options for " + " ",  # currentIface.getIfaceName(),
                          font=("Courier Bold", 24), fg="white", bg="black")
         label.pack(side=tk.TOP, expand=True, fill=tk.BOTH)
         # nmap manual
@@ -145,21 +147,21 @@ class LocalNmapMenu(tk.Frame):
 
         # nmap list hosts
         btnNmapListHost = tk.Button(self, text="nmap list hosts",
-                                    command=lambda: local.nmap("-sn", currentIface.getrange()),
+                                    command=lambda: local.nmap("-sn", " "),  # currentIface.getrange()),
                                     bg="grey",
                                     font=("Courier Bold", 16), fg="white")
         btnNmapListHost.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
 
         # nmap scan host ports
         btnNmapHostPorts = tk.Button(self, text="nmap list host ports",
-                                     command=lambda: local.nmap("", currentIface.getrange()), bg="grey",
+                                     command=lambda: local.nmap("", " "),  # currentIface.getrange()), bg="grey",
                                      font=("Courier Bold", 16), fg="white")
         btnNmapHostPorts.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
 
         # nmap scan host ports with -A
         btnNmapHostPortsAll = tk.Button(self, text="nmap list host ports (-A option)",
-                                        command=lambda: local.nmap("-A", currentIface.getrange()), bg="grey",
-                                        font=("Courier Bold", 16), fg="white")
+                                        command=lambda: local.nmap("-A", " "),  # currentIface.getrange())
+                                        bg="grey", font=("Courier Bold", 16), fg="white")
         btnNmapHostPortsAll.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
 
         # switch currentIface
@@ -226,7 +228,7 @@ class ToolsMenu(tk.Frame):
         btnAirgeddon.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
 
         # PRET
-        btnPRET = tk.Button(self, text="PRET (Manual)", command=lambda: tools.pret(), bg="grey",
+        btnPRET = tk.Button(self, text="PRET (Autostart)", command=lambda: controller.show_frame(PretMenu), bg="grey",
                             font=("Courier Bold", 16), fg="white")
         btnPRET.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
 
@@ -248,6 +250,40 @@ class ToolsMenu(tk.Frame):
         btnHome = tk.Button(self, text="Back to Home",
                             command=lambda: controller.show_frame(MainMenu), bg="red")
         btnHome.pack(fill=tk.X, side=tk.BOTTOM)
+
+
+class PretMenu(tk.Frame):
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        label = tk.Label(self, text="Tools Menu")
+        label.pack(pady=10, padx=10)
+        target = tk.StringVar()
+
+        # ip enter box
+        entrTarget = tk.Entry(self, bg="white", font=("Courier Bold", 16), fg="black", textvariable=target)
+        entrTarget.pack(fill=tk.X, side=tk.TOP)
+
+        btnBack = tk.Button(self, text="Back to Tools Menu",
+                            command=lambda: controller.show_frame(ToolsMenu), bg="red")
+        btnBack.pack(fill=tk.X, side=tk.BOTTOM)
+
+        btnHelp = tk.Button(self, text="Run pret help command", command=lambda: tools.pret(),
+                          bg="grey", font=("Courier Bold", 16), fg="white")
+        btnHelp.pack(fill=tk.X,  side=tk.BOTTOM)
+
+        # printer language buttons
+
+        btnPS = tk.Button(self, text="Start Pret using PS", command=lambda: tools.pret(target.get(), "ps"),
+                          bg="grey", font=("Courier Bold", 16), fg="white")
+        btnPS.pack(fill=tk.BOTH, expand=True, side=tk.LEFT)
+
+        btnPCL = tk.Button(self, text="Start Pret using PCL", command=lambda: tools.pret(target.get(), "pcl"),
+                           bg="grey", font=("Courier Bold", 16), fg="white")
+        btnPCL.pack(fill=tk.BOTH, expand=True, side=tk.LEFT)
+
+        btnPJL = tk.Button(self, text="Start Pret using PJL", command=lambda: tools.pret(target.get(), "pjl"),
+                           bg="grey", font=("Courier Bold", 16), fg="white")
+        btnPJL.pack(fill=tk.BOTH, expand=True, side=tk.LEFT)
 
 
 # endregion
