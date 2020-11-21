@@ -1,5 +1,5 @@
 import os
-from codeUtils.configs import configs
+from codeUtils.helperFunctions import openTermStayAlive, openTermDie
 
 commands = {
     'nmap': 'sudo nmap -h',
@@ -10,23 +10,22 @@ commands = {
 
 }
 
-tStart = configs['terminal_configs']['terminal_start']
 
 def nmap():
-    os.system(tStart + commands['nmap'] + "")
+    os.system(openTermStayAlive(commands['nmap']))
 
 
 def sqlmap():
-    os.system(tStart + commands['sqlmap'] + "")
+    os.system(openTermStayAlive(commands['sqlmap']))
 
 
 def wpscan():
-    os.system(tStart + commands['wpscan'] + "")
+    os.system(openTermStayAlive(commands['wpscan']))
 
 
 def dirb():
-    os.system(tStart + commands['dirb'] + "")
+    os.system(openTermStayAlive(commands['dirb']))
 
 
 def burp():
-    os.system(tStart + commands['burp'] + "")
+    os.system(openTermDie(commands['burp']))

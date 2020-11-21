@@ -1,5 +1,5 @@
 import os
-from codeUtils.configs import configs
+from codeUtils.helperFunctions import openTermStayAlive, openTermDie
 
 commands = {
     'ifconfig': 'sudo ifconfig',
@@ -11,10 +11,9 @@ commands = {
     'reboot': 'sudo reboot now'
 }
 
-tStart = configs['terminal_configs']['terminal_start']
 
 def ifconfig():
-    os.system("gnome-terminal --geometry 80x10+0+0 -e 'bash -c \"" + commands['ifconfig'] + "; bash\" '")
+    os.system(openTermStayAlive(commands['ifconfig']))
 
 
 def pwnCon():
@@ -22,7 +21,7 @@ def pwnCon():
 
 
 def macchange():
-    os.system("gnome-terminal --geometry 80x10+0+0 -e 'bash -c \"" + commands['macchange'] + "; bash\" '")
+    os.system(openTermStayAlive(commands['macchange']))
 
 
 def vnc():
@@ -34,8 +33,8 @@ def btToggle():
 
 
 def shutdown():
-    os.system(tStart + commands['shutdown'] + "")
+    os.system(openTermDie(commands['shutdown']))
 
 
 def reboot():
-    os.system(tStart + commands['reboot'] + "")
+    os.system(openTermDie(commands['reboot']))

@@ -1,5 +1,5 @@
 import os
-from codeUtils.configs import configs
+from codeUtils.helperFunctions import openTermStayAlive, openTermDie
 
 commands = {
     'wifite_quick': 'sudo wifite --no-wps --skip-crack',
@@ -7,19 +7,17 @@ commands = {
     'wireshark': 'sudo wireshark &'
 }
 
-tStart = configs['terminal_configs']['terminal_start']
-
 
 def wifiteQuick():
-    os.system(tStart + commands['wifite_quick'] + "")
+    os.system(openTermDie(commands['wifite_quick']))
 
 
 def wifiteFull():
-    os.system(tStart + commands['wifite_full'] + "")
+    os.system(openTermDie(commands['wifite_full']))
 
 
 def wireshark():
-    os.system(tStart + commands['wireshark'] + "")
+    os.system(openTermDie(commands['wireshark']))
 
 
 def btScan():
