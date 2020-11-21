@@ -1,4 +1,4 @@
-from configs import configs
+from codeUtils.configs import configs
 
 dieL = configs['terminal_configs']['terminal_start_die_left']
 dieR = configs['terminal_configs']['terminal_start_die_right']
