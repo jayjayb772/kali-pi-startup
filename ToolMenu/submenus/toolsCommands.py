@@ -6,8 +6,8 @@ commands = {
     'routersploit': 'cd ~/Tools/routersploit && sudo python3 ~/Tools/routersploit/rsf.py',
     'metasploit': 'sudo msfconsole',
     'setk': 'sudo setoolkit',
-    'gqrx':'sudo gqrx',
-    'rtl443':''
+    'gqrx': 'gqrx',
+    'rtl443': 'sudo rtl_433'
 }
 
 
@@ -31,9 +31,16 @@ def metasploit():
 def setk():
     os.system("gnome-terminal --geometry 80x10+0+0 -e 'bash -c \"" + commands['setk'] + "\" '")
 
+
 def gqrx():
-    os.system("gnome-terminal --geometry 80x10+0+0 -e 'bash -c \"" + commands['gqrx'] + "\" '")
+    os.system("gnome-terminal --geometry 80x10+0+0 -e 'bash -c \"" + commands['gqrx'] + "; bash\" '")
 
-def rtl443():
-    os.system("gnome-terminal --geometry 80x10+0+0 -e 'bash -c \"" + commands['rtl443'] + "\" '")
 
+def rtl433(option="", file=""):
+    if option == "-w" and file == "":
+        file = "default-out-file"
+        os.system("gnome-terminal --geometry 80x10+0+0 -e 'bash -c \"" + commands[
+            'rtl443'] + " -w ~/rtl433_output/" + file + "; bash\" '")
+    else:
+        os.system(
+            "gnome-terminal --geometry 80x10+0+0 -e 'bash -c \"" + commands['rtl443'] + " " + option + "; bash\" '")

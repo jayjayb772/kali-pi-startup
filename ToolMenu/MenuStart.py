@@ -25,7 +25,7 @@ class TouchMenu(tk.Tk):
         container.grid_columnconfigure(0, weight=1)
 
         self.frames = {}
-        for F in (MainMenu, WifiMenu, LNRMenu, LocalNmapMenu, WRMenu, UtilitiesMenu, ToolsMenu, PretMenu):
+        for F in (MainMenu, WifiMenu, LNRMenu, LocalNmapMenu, WRMenu, UtilitiesMenu, ToolsMenu, PretMenu, RTL433Menu, RTL433OutputMenu):
             frame = F(container, self)
             self.frames[F] = frame
             frame.grid(row=0, column=0, sticky="nsew")
@@ -255,7 +255,8 @@ class ToolsMenu(tk.Frame):
         btnGqrx.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
 
         # rtl443 sdr tool
-        btnRtl443 = tk.Button(self, text="Start the RTL443 SDR tool", command=lambda: tools.rtl443(), bg="grey",
+        btnRtl443 = tk.Button(self, text="Start the RTL443 SDR tool", command=lambda: controller.show_frame(RTL433Menu),
+                              bg="grey",
                               font=("Courier Bold", 16), fg="white")
         btnRtl443.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
 
@@ -300,6 +301,56 @@ class PretMenu(tk.Frame):
         btnPJL = tk.Button(self, text="Start Pret using PJL", command=lambda: tools.pret(target.get(), "pjl"),
                            bg="grey", font=("Courier Bold", 16), fg="white")
         btnPJL.pack(fill=tk.BOTH, expand=True, side=tk.LEFT)
+
+
+class RTL433Menu(tk.Frame):
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        label = tk.Label(self, text="RTL_433 Menu",
+                         font=("Courier Bold", 24), fg="white", bg="black")
+        label.pack(side=tk.TOP, fill=tk.X)
+
+        # printer language buttons
+
+        btnHelp = tk.Button(self, text="Run \"rtl_433 -h\" (Help)", command=lambda: tools.rtl433("-h", ""),
+                            bg="grey", font=("Courier Bold", 16), fg="white")
+        btnHelp.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
+
+        btnG = tk.Button(self, text="Run \"rtl_433 -G\" (Decode All)", command=lambda: tools.rtl433("-G", ""),
+                         bg="grey", font=("Courier Bold", 16), fg="white")
+        btnG.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
+
+        btnOut = tk.Button(self, text="Output to file menu", command=lambda: controller.show_frame(RTL433OutputMenu),
+                           bg="grey", font=("Courier Bold", 16), fg="white")
+        btnOut.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
+
+        btnBack = tk.Button(self, text="Back to Tools Menu",
+                            command=lambda: controller.show_frame(ToolsMenu), bg="red")
+        btnBack.pack(fill=tk.X, side=tk.BOTTOM)
+
+
+class RTL433OutputMenu(tk.Frame):
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        label = tk.Label(self, text="RTL_433 Output Menu",
+                         font=("Courier Bold", 24), fg="white", bg="black")
+        label.pack(side=tk.TOP, fill=tk.X)
+        file = tk.StringVar()
+
+        # printer language buttons
+        lblFile = tk.Label(self, bg="white", font=("Courier Bold", 12), fg="black",
+                           text="Please type the name for the output")
+        lblFile.pack(fill=tk.X, side=tk.TOP)
+        entrFile = tk.Entry(self, bg="white", font=("Courier Bold", 12), fg="black", textvariable=file)
+        entrFile.pack(fill=tk.X, side=tk.TOP)
+
+        btnOut = tk.Button(self, text="Run \"rtl_433 -w\"", command=lambda: tools.rtl433("-w", file.get()),
+                           bg="grey", font=("Courier Bold", 16), fg="white")
+        btnOut.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
+
+        btnBack = tk.Button(self, text="Back to RTL433 Menu",
+                            command=lambda: controller.show_frame(RTL433Menu), bg="red")
+        btnBack.pack(fill=tk.X, side=tk.BOTTOM)
 
 
 # endregion

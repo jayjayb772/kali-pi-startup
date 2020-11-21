@@ -9,6 +9,8 @@ sudo apt dist-upgrade -y
 sudo apt install onboard -y
 sudo apt-get install cmake build-essential python-pip libusb-1.0-0-dev python-numpy git pandoc -y
 sudo mkdir "$HOME"/Tools
+
+#region TOOLS
 cd Tools
 # Get routersploit
 git clone https://github.com/threat9/routersploit
@@ -31,19 +33,37 @@ sudo apt-get install isc-dhcp-server dsniff beef-xss mdk4 hostapd lighttpd bette
 
 
 #get sdr library
-cd ~
-git clone git://git.osmocom.org/rtl-sdr.git
-cd rtl-sdr
-mkdir build
-cd build
-cmake ../ -DINSTALL_UDEV_RULES=ON -DDETACH_KERNEL_DRIVER=ON
-make
-sudo make install
-sudo ldconfig
-#install requirements
-sudo pip install pyrtlsdr
-sudo pip3 install pyrtlsdr
+#cd ~
+#git clone git://git.osmocom.org/rtl-sdr.git
+#cd rtl-sdr
+#mkdir build
+#cd build
+#cmake ../ -DINSTALL_UDEV_RULES=ON -DDETACH_KERNEL_DRIVER=ON
+#make
+#sudo make install
+#sudo ldconfig
+##install requirements
+#sudo pip install pyrtlsdr
+#sudo pip3 install pyrtlsdr
 
+sudo apt-get install gnuradio rtl-sdr gr-osmosdr gqrx-sdr -y
+
+
+#rtl443 setup
+sudo apt-get install libtool libusb-1.0-0-dev librtlsdr-dev build-essential autoconf cmake pkg-config -y
+
+git clone https://github.com/merbanan/rtl_433
+cd rtl_433/
+sudo mkdir build
+sudo cmake . .
+sudo make
+sudo make install
+cd ../
+
+sudo mkdir ~/rtl433_output
+
+cd ~/
+#endregion
 
 #setup ssh
 sudo dpkg-reconfigure openssh-server
@@ -60,4 +80,7 @@ sudo apt-get install tightvnc
 
 
 sudo apt-get autoremove
+
+
+
 
