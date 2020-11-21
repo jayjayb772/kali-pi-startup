@@ -1,5 +1,5 @@
 import os
-from ToolMenu.codeUtils.configs import configs
+from codeUtils.configs import configs
 
 commands = {
     'airgeddon': 'cd ~/Tools/airgeddon && sudo ~/Tools/airgeddon/airgeddon.sh',
