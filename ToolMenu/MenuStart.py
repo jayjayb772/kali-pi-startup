@@ -164,6 +164,7 @@ class LocalNmapMenu(tk.Frame):
                                         bg="grey", font=("Courier Bold", 16), fg="white")
         btnNmapHostPortsAll.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
 
+
         # switch currentIface
         btnSwitchIface = tk.Button(self, text="switch current interface",
                                    command=lambda: switchIface(), bg="grey",
@@ -316,7 +317,7 @@ class RTL433Menu(tk.Frame):
                             bg="grey", font=("Courier Bold", 16), fg="white")
         btnHelp.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
 
-        btnG = tk.Button(self, text="Run \"rtl_433 -G\" (Decode All)", command=lambda: tools.rtl433("-G", ""),
+        btnG = tk.Button(self, text="Run \"rtl_433 -G\" (Decode All)", command=lambda: tools.rtl433("-G 4", ""),
                          bg="grey", font=("Courier Bold", 16), fg="white")
         btnG.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
 
