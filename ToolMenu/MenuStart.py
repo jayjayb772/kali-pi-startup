@@ -249,6 +249,16 @@ class ToolsMenu(tk.Frame):
                             font=("Courier Bold", 16), fg="white")
         btnSetk.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
 
+        # gqrx sdr
+        btnGqrx = tk.Button(self, text="Start GQRX SDR", command=lambda: tools.gqrx(), bg="grey",
+                            font=("Courier Bold", 16), fg="white")
+        btnGqrx.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
+
+        # rtl443 sdr tool
+        btnRtl443 = tk.Button(self, text="Start the RTL443 SDR tool", command=lambda: tools.rtl443(), bg="grey",
+                              font=("Courier Bold", 16), fg="white")
+        btnRtl443.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
+
         btnHome = tk.Button(self, text="Back to Home",
                             command=lambda: controller.show_frame(MainMenu), bg="red")
         btnHome.pack(fill=tk.X, side=tk.BOTTOM)
@@ -274,8 +284,8 @@ class PretMenu(tk.Frame):
         btnBack.pack(fill=tk.X, side=tk.BOTTOM)
 
         btnHelp = tk.Button(self, text="Run pret help command", command=lambda: tools.pret(),
-                          bg="grey", font=("Courier Bold", 16), fg="white")
-        btnHelp.pack(fill=tk.X,  side=tk.BOTTOM)
+                            bg="grey", font=("Courier Bold", 16), fg="white")
+        btnHelp.pack(fill=tk.X, side=tk.BOTTOM)
 
         # printer language buttons
 
