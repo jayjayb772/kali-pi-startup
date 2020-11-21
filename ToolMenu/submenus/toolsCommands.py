@@ -1,4 +1,5 @@
 import os
+from ToolMenu.codeUtils.configs import configs
 
 commands = {
     'airgeddon': 'cd ~/Tools/airgeddon && sudo ~/Tools/airgeddon/airgeddon.sh',
@@ -12,7 +13,7 @@ commands = {
 
 
 def airgeddon():
-    os.system("gnome-terminal --geometry 80x10+0+0 -e 'bash -c \"" + commands['airgeddon'] + "\" '")
+    os.system(configs['terminal_configs']['terminal_start'] + commands['airgeddon'] + "\" '")
 
 
 def pret(target="-h", type=""):

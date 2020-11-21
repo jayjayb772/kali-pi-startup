@@ -9,6 +9,7 @@ import submenus.webCommands as web
 
 # import codeUtils.interfaceClass as iface
 
+
 # wlan0 = iface.Interface("wlan0")
 # eth0 = iface.Interface("eth0")
 # currentIface = wlan0
