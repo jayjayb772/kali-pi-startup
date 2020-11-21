@@ -321,6 +321,10 @@ class RTL433Menu(tk.Frame):
                          bg="grey", font=("Courier Bold", 16), fg="white")
         btnG.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
 
+        btnA = tk.Button(self, text="Run \"rtl_433 -A\" (Dump signals)", command=lambda: tools.rtl433("-A", ""),
+                         bg="grey", font=("Courier Bold", 16), fg="white")
+        btnA.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
+
         btnOut = tk.Button(self, text="Output to file menu", command=lambda: controller.show_frame(RTL433OutputMenu),
                            bg="grey", font=("Courier Bold", 16), fg="white")
         btnOut.pack(fill=tk.BOTH, expand=True, side=tk.TOP)
