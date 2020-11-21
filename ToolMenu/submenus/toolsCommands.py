@@ -3,8 +3,8 @@ from codeUtils.configs import configs
 
 commands = {
     'airgeddon': 'sudo ~/Tools/airgeddon/airgeddon.sh',
-    'pret': 'cd ~/Tools/PRET && sudo python ~/Tools/PRET/pret.py',
-    'routersploit': 'cd ~/Tools/routersploit && sudo python3 ~/Tools/routersploit/rsf.py',
+    'pret': 'sudo python ~/Tools/PRET/pret.py',
+    'routersploit': 'sudo python3 ~/Tools/routersploit/rsf.py',
     'metasploit': 'sudo msfconsole',
     'setk': 'sudo setoolkit',
     'gqrx': 'gqrx',
