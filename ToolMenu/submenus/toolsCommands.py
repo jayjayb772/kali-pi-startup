@@ -40,7 +40,7 @@ def rtl433(option="", file=""):
     if option == "-w" and file == "":
         file = "default-out-file"
         os.system("gnome-terminal --geometry 80x10+0+0 -e 'bash -c \"" + commands[
-            'rtl443'] + " -w ~/rtl433_output/" + file + "; bash\" '")
+            'rtl443'] + " -w ~/rtl433_output/" + file + " -G 4 -A -v; bash\" '")
     else:
         os.system(
             "gnome-terminal --geometry 80x10+0+0 -e 'bash -c \"" + commands['rtl443'] + " " + option + "; bash\" '")
