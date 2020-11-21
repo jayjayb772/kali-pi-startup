@@ -1,4 +1,5 @@
 import os
+from codeUtils.configs import configs
 
 commands = {
     'nmap': 'sudo nmap',
@@ -6,6 +7,7 @@ commands = {
     'wireshark': 'sudo wireshark &'
 }
 
+tStart = configs['terminal_configs']['terminal_start']
 
 def nmap(scanType=" -h ", scanrange=" "):
     os.system("gnome-terminal --geometry 80x10+0+0 -e 'bash -c \"" + commands[
@@ -13,8 +15,8 @@ def nmap(scanType=" -h ", scanrange=" "):
 
 
 def netdiscover():
-    os.system("gnome-terminal --geometry 80x10+0+0 -e 'bash -c \"" + commands['netdisc'] + "; bash\" '")
+    os.system(tStart + commands['netdisc'] + "")
 
 
 def wireshark():
-    os.system("gnome-terminal --geometry 80x10+0+0 -e 'bash -c \"" + commands['wireshark'] + "\" '")
+    os.system(tStart + commands['wireshark'] + "")

@@ -2,7 +2,7 @@ import os
 from codeUtils.configs import configs
 
 commands = {
-    'airgeddon': 'cd ~/Tools/airgeddon && sudo ~/Tools/airgeddon/airgeddon.sh',
+    'airgeddon': 'sudo ~/Tools/airgeddon/airgeddon.sh',
     'pret': 'cd ~/Tools/PRET && sudo python ~/Tools/PRET/pret.py',
     'routersploit': 'cd ~/Tools/routersploit && sudo python3 ~/Tools/routersploit/rsf.py',
     'metasploit': 'sudo msfconsole',
@@ -11,37 +11,39 @@ commands = {
     'rtl443': 'sudo rtl_433'
 }
 
+tStart = configs['terminal_configs']['terminal_start']
+
 
 def airgeddon():
-    os.system(configs['terminal_configs']['terminal_start'] + commands['airgeddon'] + "\" '")
+    os.system(tStart + commands['airgeddon'] + "")
 
 
 def pret(target="-h", type=""):
-    os.system("gnome-terminal --geometry 80x10+0+0 -e 'bash -c \"" + commands[
-        'pret'] + " " + target + " " + type + "; bash\" '")
+    os.system(tStart + commands[
+        'pret'] + " " + target + " " + type + "")
 
 
 def routersploit():
-    os.system("gnome-terminal --geometry 80x10+0+0 -e 'bash -c \"" + commands['routersploit'] + "\" '")
+    os.system(tStart + commands['routersploit'] + "")
 
 
 def metasploit():
-    os.system("gnome-terminal --geometry 80x10+0+0 -e 'bash -c \"" + commands['metasploit'] + "\" '")
+    os.system(tStart + commands['metasploit'] + "")
 
 
 def setk():
-    os.system("gnome-terminal --geometry 80x10+0+0 -e 'bash -c \"" + commands['setk'] + "\" '")
+    os.system(tStart + commands['setk'] + "")
 
 
 def gqrx():
-    os.system("gnome-terminal --geometry 80x10+0+0 -e 'bash -c \"" + commands['gqrx'] + "; bash\" '")
+    os.system(tStart + commands['gqrx'] + "")
 
 
 def rtl433(option="", file=""):
     if option == "-w" and file == "":
         file = "default-out-file"
-        os.system("gnome-terminal --geometry 80x10+0+0 -e 'bash -c \"" + commands[
-            'rtl443'] + " -w ~/rtl433_output/" + file + " -G 4 -A -v; bash\" '")
+        os.system(tStart + commands[
+            'rtl443'] + " -w ~/rtl433_output/" + file + " -G 4 -A -v")
     else:
         os.system(
-            "gnome-terminal --geometry 80x10+0+0 -e 'bash -c \"" + commands['rtl443'] + " " + option + "; bash\" '")
+            tStart + commands['rtl443'] + " " + option + "")

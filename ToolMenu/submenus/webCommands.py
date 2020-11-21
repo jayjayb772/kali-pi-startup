@@ -1,4 +1,5 @@
 import os
+from codeUtils.configs import configs
 
 commands = {
     'nmap': 'sudo nmap -h',
@@ -9,22 +10,23 @@ commands = {
 
 }
 
+tStart = configs['terminal_configs']['terminal_start']
 
 def nmap():
-    os.system("gnome-terminal --geometry 80x10+0+0 -e 'bash -c \"" + commands['nmap'] + "; bash\" '")
+    os.system(tStart + commands['nmap'] + "")
 
 
 def sqlmap():
-    os.system("gnome-terminal --geometry 80x10+0+0 -e 'bash -c \"" + commands['sqlmap'] + "; bash\" '")
+    os.system(tStart + commands['sqlmap'] + "")
 
 
 def wpscan():
-    os.system("gnome-terminal --geometry 80x10+0+0 -e 'bash -c \"" + commands['wpscan'] + "; bash\" '")
+    os.system(tStart + commands['wpscan'] + "")
 
 
 def dirb():
-    os.system("gnome-terminal --geometry 80x10+0+0 -e 'bash -c \"" + commands['dirb'] + "; bash\" '")
+    os.system(tStart + commands['dirb'] + "")
 
 
 def burp():
-    os.system("gnome-terminal --geometry 80x10+0+0 -e 'bash -c \"" + commands['burp'] + "\" '")
+    os.system(tStart + commands['burp'] + "")

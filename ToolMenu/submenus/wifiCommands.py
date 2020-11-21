@@ -1,4 +1,5 @@
 import os
+from codeUtils.configs import configs
 
 commands = {
     'wifite_quick': 'sudo wifite --no-wps --skip-crack',
@@ -6,17 +7,19 @@ commands = {
     'wireshark': 'sudo wireshark &'
 }
 
+tStart = configs['terminal_configs']['terminal_start']
+
 
 def wifiteQuick():
-    os.system("gnome-terminal --geometry 80x10+0+0 -e 'bash -c \"" + commands['wifite_quick'] + "\" '")
+    os.system(tStart + commands['wifite_quick'] + "")
 
 
 def wifiteFull():
-    os.system("gnome-terminal --geometry 80x10+0+0 -e 'bash -c \"" + commands['wifite_full'] + "\" '")
+    os.system(tStart + commands['wifite_full'] + "")
 
 
 def wireshark():
-    os.system("gnome-terminal --geometry 80x10+0+0 -e 'bash -c \"" + commands['wireshark'] + "\" '")
+    os.system(tStart + commands['wireshark'] + "")
 
 
 def btScan():
