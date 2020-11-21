@@ -184,7 +184,7 @@ class WRMenu(tk.Frame):
         tk.Frame.__init__(self, parent)
         label = tk.Label(self, text="Web Recon Menu",
                          font=("Courier Bold", 24), fg="white", bg="black")
-        label.pack(pady=10, padx=10)
+        label.pack(side=tk.TOP, expand=True, fill=tk.BOTH)
         # nmap
         btnNmap = tk.Button(self, text="nmap options", command=lambda: web.nmap(), bg="grey",
                             font=("Courier Bold", 16), fg="white")
@@ -366,7 +366,7 @@ class UtilitiesMenu(tk.Frame):
         tk.Frame.__init__(self, parent)
         label = tk.Label(self, text="Utilities Menu",
                          font=("Courier Bold", 24), fg="white", bg="black")
-        label.pack(pady=10, padx=10)
+        label.pack(side=tk.TOP, expand=True, fill=tk.BOTH)
         # ifconfig
         btnIfconfig = tk.Button(self, text="Run ifconfig", command=lambda: utils.ifconfig(), bg="grey",
                                 font=("Courier Bold", 16),
