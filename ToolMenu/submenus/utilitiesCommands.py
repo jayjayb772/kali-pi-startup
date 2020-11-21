@@ -22,7 +22,7 @@ def pwnCon():
 
 
 def macchange():
-    os.system(tStart + commands['macchange'] + "")
+    os.system("gnome-terminal --geometry 80x10+0+0 -e 'bash -c \"" + commands['macchange'] + "; bash\" '")
 
 
 def vnc():
