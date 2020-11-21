@@ -7,7 +7,7 @@ sudo apt upgrade -y
 sudo apt full-upgrade -y
 sudo apt dist-upgrade -y
 sudo apt install onboard -y
-sudo apt-get install cmake build-essential python-pip libusb-1.0-0-dev python-numpy git pandoc -y
+sudo apt-get install cmake build-essential python-pip libusb-1.0-0-dev python-numpy git pandoc isc-dhcp-server dsniff beef-xss mdk4 hostapd lighttpd bettercap hostapd-wpe hcxdumptool hcxtools libtool librtlsdr-dev autoconf pkg-config gnuradio rtl-sdr gr-osmosdr gqrx-sdr -y
 sudo mkdir "$HOME"/Tools
 
 #region TOOLS
@@ -29,7 +29,6 @@ sudo pip3 install colorama pysnmp
 #Get airrgeddon
 git clone https://github.com/v1s1t0r1sh3r3/airgeddon
 #install requirements
-sudo apt-get install isc-dhcp-server dsniff beef-xss mdk4 hostapd lighttpd bettercap hostapd-wpe hcxdumptool hcxtools -y
 
 
 #get sdr library
@@ -46,11 +45,10 @@ sudo apt-get install isc-dhcp-server dsniff beef-xss mdk4 hostapd lighttpd bette
 #sudo pip install pyrtlsdr
 #sudo pip3 install pyrtlsdr
 
-sudo apt-get install gnuradio rtl-sdr gr-osmosdr gqrx-sdr -y
+
 
 
 #rtl443 setup
-sudo apt-get install libtool libusb-1.0-0-dev librtlsdr-dev build-essential autoconf cmake pkg-config -y
 
 git clone https://github.com/merbanan/rtl_433
 cd rtl_433/
@@ -70,7 +68,7 @@ sudo dpkg-reconfigure openssh-server
 sudo update-rc.d -f ssh remove
 sudo update-rc.d -f ssh defaults
 #EDIT FILE
-nano /etc/ssh/sshd_config
+#nano /etc/ssh/sshd_config
 sudo update-rc.d -f ssh enable 2 3 4 5
 
 #setup vnc
@@ -82,5 +80,8 @@ sudo apt-get install tightvnc
 sudo apt-get autoremove
 
 
+sudo touch /usr/local/bin/touch-menu
+sudo echo "#!/bin/bash" >> /usr/local/bin/touch-menu
+sudo echo "sudo python3 ~/kali-pi-startup/ToolMenu/MenuStart.py" >> /usr/local/bin/touch-menu
 
 
