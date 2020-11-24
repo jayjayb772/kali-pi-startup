@@ -7,7 +7,7 @@ sudo apt full-upgrade -y
 sudo apt dist-upgrade -y
 sudo apt install onboard -y
 sudo apt-get install cmake build-essential python-pip3 libusb-1.0-0-dev python3-numpy git pandoc isc-dhcp-server dsniff beef-xss mdk4 hostapd lighttpd bettercap hostapd-wpe hcxdumptool hcxtools libtool librtlsdr-dev autoconf pkg-config gnuradio rtl-sdr gr-osmosdr gqrx-sdr -y
-sudo mkdir "$HOME"/Tools
+sudo mkdir Tools
 
 #region TOOLS
 cd Tools
@@ -48,7 +48,7 @@ sudo pip3 install pyrtlsdr
 sudo python -m pip install --user numpy scipy matplotlib ipython jupyter pandas sympy nose
 #sudo python -m pip install --user numpy scipy matplotlib ipython jupyter pandas sympy nose
 
-cd "$HOME"/Tools
+cd $HOME/Tools
 sudo git clone https://github.com/Banjopkr/WQ7Tpanadapter.git
 sudo cp -r WQ7Tpanadapter/FreqShow_Large FreqShow_Large
 sudo cp -r FreqShow_Large/FreqShow.desktop Desktop/FreqShow.desktop
