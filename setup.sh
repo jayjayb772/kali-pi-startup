@@ -31,19 +31,9 @@ git clone https://github.com/v1s1t0r1sh3r3/airgeddon
 #install requirements
 
 
-#get sdr library
-#cd ~
-#git clone git://git.osmocom.org/rtl-sdr.git
-#cd rtl-sdr
-#mkdir build
-#cd build
-#cmake ../ -DINSTALL_UDEV_RULES=ON -DDETACH_KERNEL_DRIVER=ON
-#make
-#sudo make install
-#sudo ldconfig
-##install requirements
+
 #sudo pip install pyrtlsdr
-#sudo pip3 install pyrtlsdr
+
 
 sudo git clone git://git.osmocom.org/rtl-sdr.git
 cd rtl-sdr
@@ -54,8 +44,10 @@ sudo make
 sudo make install
 sudo ldconfig
 sudo pip install pyrtlsdr
+sudo pip3 install pyrtlsdr
 
 sudo python -m pip install --user numpy scipy matplotlib ipython jupyter pandas sympy nose
+#sudo python -m pip install --user numpy scipy matplotlib ipython jupyter pandas sympy nose
 
 cd "$HOME"/Tools
 sudo git clone https://github.com/Banjopkr/WQ7Tpanadapter.git
