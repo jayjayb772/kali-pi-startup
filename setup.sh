@@ -6,7 +6,7 @@ sudo apt upgrade -y
 sudo apt full-upgrade -y
 sudo apt dist-upgrade -y
 sudo apt install onboard -y
-sudo apt-get install cmake build-essential python3-pip libusb-1.0-0-dev python3-numpy git pandoc isc-dhcp-server dsniff beef-xss mdk4 hostapd lighttpd bettercap hostapd-wpe hcxdumptool hcxtools libtool librtlsdr-dev autoconf pkg-config gnuradio rtl-sdr gr-osmosdr gqrx-sdr -y
+sudo apt-get install -y cmake build-essential python3-pip libusb-1.0-0-dev gnome-terminal python3-numpy git pandoc isc-dhcp-server dsniff beef-xss mdk4 hostapd lighttpd bettercap hostapd-wpe hcxdumptool hcxtools libtool librtlsdr-dev autoconf pkg-config gnuradio rtl-sdr gr-osmosdr gqrx-sdr -y
 sudo mkdir Tools
 
 #region TOOLS
@@ -47,12 +47,13 @@ sudo pip3 install pyrtlsdr
 
 sudo python -m pip install --user numpy scipy matplotlib ipython jupyter pandas sympy nose
 #sudo python -m pip install --user numpy scipy matplotlib ipython jupyter pandas sympy nose
+cd ../../
 
-cd $HOME/Tools
+cd $HOME
 sudo git clone https://github.com/Banjopkr/WQ7Tpanadapter.git
 sudo cp -r WQ7Tpanadapter/FreqShow_Large FreqShow_Large
 sudo cp -r FreqShow_Large/FreqShow.desktop Desktop/FreqShow.desktop
-
+cd $HOME/Tools
 #rtl443 setup
 
 git clone https://github.com/merbanan/rtl_433
@@ -88,5 +89,5 @@ sudo apt-get autoremove
 sudo touch /usr/local/bin/touch-menu
 sudo echo "#!/bin/bash" >> /usr/local/bin/touch-menu
 sudo echo "sudo python3 ~/kali-pi-startup/ToolMenu/MenuStart.py" >> /usr/local/bin/touch-menu
-
+sudo chmod +x /usr/local/bin/touch-menu
 
