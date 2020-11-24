@@ -6,7 +6,7 @@ sudo apt upgrade -y
 sudo apt full-upgrade -y
 sudo apt dist-upgrade -y
 sudo apt install onboard -y
-sudo apt-get install cmake build-essential python-pip libusb-1.0-0-dev python-numpy git pandoc isc-dhcp-server dsniff beef-xss mdk4 hostapd lighttpd bettercap hostapd-wpe hcxdumptool hcxtools libtool librtlsdr-dev autoconf pkg-config gnuradio rtl-sdr gr-osmosdr gqrx-sdr -y
+sudo apt-get install cmake build-essential python-pip3 libusb-1.0-0-dev python3-numpy git pandoc isc-dhcp-server dsniff beef-xss mdk4 hostapd lighttpd bettercap hostapd-wpe hcxdumptool hcxtools libtool librtlsdr-dev autoconf pkg-config gnuradio rtl-sdr gr-osmosdr gqrx-sdr -y
 sudo mkdir "$HOME"/Tools
 
 #region TOOLS
