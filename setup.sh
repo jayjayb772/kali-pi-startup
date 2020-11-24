@@ -45,8 +45,22 @@ git clone https://github.com/v1s1t0r1sh3r3/airgeddon
 #sudo pip install pyrtlsdr
 #sudo pip3 install pyrtlsdr
 
+sudo git clone git://git.osmocom.org/rtl-sdr.git
+cd rtl-sdr
+sudo mkdir build
+sudo cd build
+sudo cmake ../ -DINSTALL_UDEV_RULES=ON -DDETACH_KERNEL_DRIVER=ON
+sudo make
+sudo make install
+sudo ldconfig
+sudo pip install pyrtlsdr
 
+sudo python -m pip install --user numpy scipy matplotlib ipython jupyter pandas sympy nose
 
+cd "$HOME"/Tools
+sudo git clone https://github.com/Banjopkr/WQ7Tpanadapter.git
+sudo cp -r WQ7Tpanadapter/FreqShow_Large FreqShow_Large
+sudo cp -r FreqShow_Large/FreqShow.desktop Desktop/FreqShow.desktop
 
 #rtl443 setup
 

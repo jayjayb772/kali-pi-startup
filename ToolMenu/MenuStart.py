@@ -333,6 +333,7 @@ class RTL433Menu(tk.Frame):
         btnBack = tk.Button(self, text="Back to Tools Menu",
                             command=lambda: controller.show_frame(ToolsMenu), bg="red")
         btnBack.pack(fill=tk.X, side=tk.BOTTOM)
+        
 
 
 class RTL433OutputMenu(tk.Frame):
