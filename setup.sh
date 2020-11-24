@@ -37,7 +37,7 @@ git clone https://github.com/v1s1t0r1sh3r3/airgeddon
 sudo git clone git://git.osmocom.org/rtl-sdr.git
 cd rtl-sdr
 sudo mkdir build
-sudo cd build
+cd build
 sudo cmake ../ -DINSTALL_UDEV_RULES=ON -DDETACH_KERNEL_DRIVER=ON
 sudo make
 sudo make install
