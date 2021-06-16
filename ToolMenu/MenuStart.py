@@ -1,11 +1,13 @@
 import tkinter as tk
+from dotenv import load_dotenv
+
 
 import submenus.wifiCommands as wifi
 import submenus.localNetworkCommands as local
 import submenus.utilitiesCommands as utils
 import submenus.toolsCommands as tools
 import submenus.webCommands as web
-
+load_dotenv()
 
 # import codeUtils.interfaceClass as iface
 
